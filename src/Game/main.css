@@ -1,0 +1,17 @@
+.mainDiv {
+  border: 1px solid;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(201, 230, 201);
+}
+
+.game-wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 155px;
+  margin: auto;
+  margin-top: 100px;
+}
