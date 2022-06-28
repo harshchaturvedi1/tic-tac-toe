@@ -18,27 +18,28 @@ const Main = () => {
   const checkWinner = () => {
     let winner = "no";
     // rows
-    if (score[0] === score[1] && score[1] === score[2] && score[0] !== "0")
+    // here if we compare "0" and 0 , it will give false
+    if (score[0] === score[1] && score[1] === score[2] && score[0] !== 0)
       winner = score[1];
-    else if (score[3] === score[4] && score[4] === score[5] && score[3] !== "0")
+    else if (score[3] === score[4] && score[4] === score[5] && score[3] !== 0)
       winner = score[3];
-    else if (score[6] === score[7] && score[7] === score[8] && score[7] !== "0")
+    else if (score[6] === score[7] && score[7] === score[8] && score[7] !== 0)
       winner = score[7];
     // col
-    else if (score[0] === score[3] && score[0] === score[6] && score[0] !== "0")
+    else if (score[0] === score[3] && score[0] === score[6] && score[0] !== 0)
       winner = score[0];
-    else if (score[1] === score[4] && score[1] === score[7] && score[1] !== "0")
+    else if (score[1] === score[4] && score[1] === score[7] && score[1] !== 0)
       winner = score[1];
-    else if (score[2] === score[5] && score[2] === score[8] && score[2] !== "0")
+    else if (score[2] === score[5] && score[2] === score[8] && score[2] !== 0)
       winner = score[2];
     // diag
-    else if (score[0] === score[4] && score[0] === score[8] && score[0] !== "0")
+    else if (score[0] === score[4] && score[0] === score[8] && score[0] !== 0)
       winner = score[0];
-    else if (score[2] === score[4] && score[2] === score[6] && score[2] !== "0")
+    else if (score[2] === score[4] && score[2] === score[6] && score[2] !== 0)
       winner = score[2];
 
     if (winner !== "no") {
-      if (winner === "x") alert("winner is player 'X'");
+      if (winner === "X") alert("winner is player 'X'");
       else alert("winner is player 'O' ");
       resetGame();
     }
@@ -66,7 +67,7 @@ const Main = () => {
   };
 
   useEffect(() => {
-    checkWinner();
+    // when all 9 boxes are filled
     if (count === 9) {
       setTimeout(() => {
         console.log(...init);
@@ -75,6 +76,10 @@ const Main = () => {
         resetGame();
       }, 500);
     }
+    // delaying the call to show value in ui
+    setTimeout(() => {
+      checkWinner();
+    }, 500);
   }, [count]);
 
   return (
